@@ -1,0 +1,39 @@
+/* Shared styles for every Trial Binder page */
+body{margin:0;font-family:Montserrat,sans-serif;background:#FFFFFF;color:#1A1A1A}
+a{color:#8B1A1A}a:hover{color:#6E1414}
+
+/* Header (rendered by js/layout.js) */
+.site-header{height:96px;box-sizing:border-box;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:#FFFFFF;border-bottom:1px solid #E8E0D8}
+.site-logo{display:flex;align-items:center;text-decoration:none}
+.site-logo img{display:block;height:80px;width:auto}
+.site-nav{display:flex;gap:36px}
+.site-nav a{text-decoration:none;font-size:16px;padding:8px 0;color:#1A1A1A;font-weight:500;border-bottom:2px solid transparent}
+.site-nav a:hover{color:#8B1A1A}
+.site-nav a[aria-current="page"]{color:#8B1A1A;font-weight:700;border-bottom-color:#8B1A1A}
+.site-header-cta{text-decoration:none;background:#8B1A1A;color:#FFFFFF;font-weight:700;font-size:17px;padding:15px 30px;border-radius:8px}
+.site-header-cta:hover{background:#6E1414;color:#FFFFFF}
+
+/* Footer (rendered by js/layout.js) */
+.site-footer{margin-top:auto;background:#1F1B1A;padding:72px 40px 40px;display:flex;flex-direction:column;gap:48px}
+.site-footer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px}
+.site-footer-col{display:flex;flex-direction:column;gap:12px}
+.site-footer-col:first-child{gap:16px}
+.site-footer-brand{display:block;align-self:flex-start}
+.site-footer-brand img{display:block;height:64px;width:auto}
+.site-footer-heading{font-size:15px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#FFFFFF}
+.site-footer p,.site-footer address{margin:0;font-style:normal;font-size:16px;line-height:1.6;color:#D9D2CC}
+.site-footer-col a{text-decoration:none;color:#D9D2CC;font-size:16px}
+.site-footer-col a:hover{color:#FFFFFF}
+.site-footer-bottom{border-top:1px solid #3A3432;padding-top:24px;display:flex;justify-content:space-between;gap:16px;font-size:14px;color:#A9A09A}
+.site-footer-bottom span{display:flex;gap:24px}
+.site-footer-bottom a{color:#A9A09A}
+
+@media (max-width: 1100px){
+ .page header{flex-wrap:wrap;height:auto!important;padding:16px 20px!important;gap:12px}
+ .page nav{flex-wrap:wrap;gap:16px!important}
+ .page section,.page footer{padding-left:20px!important;padding-right:20px!important;padding-top:56px!important;padding-bottom:56px!important}
+ .page [style*="grid-template-columns"],.site-footer-grid{grid-template-columns:1fr!important}
+ .page [style*="grid-column: span"]{grid-column:auto!important}
+ .page h1{font-size:38px!important}.page h2{font-size:30px!important}
+ .page [style*="justify-content: space-between"],.site-footer-bottom{flex-wrap:wrap}
+}
