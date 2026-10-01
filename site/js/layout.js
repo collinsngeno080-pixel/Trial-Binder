@@ -23,7 +23,7 @@
         '<img src="images/logo-nav.gif" alt="Lit &amp; More" width="400" height="250">' +
       '</a>' +
       '<nav class="site-nav" aria-label="Trial Binder">' + navLinks + '</nav>' +
-      '<a class="site-header-cta" href="contact.html">Order Your Binder</a>' +
+      '<a class="site-header-cta" href="contact.html">Send your files</a>' +
     '</header>';
 
   var footer =
@@ -41,7 +41,7 @@
         '</div>' +
         '<div class="site-footer-col">' +
           '<div class="site-footer-heading">More from Lit &amp; More</div>' +
-          '<a href="https://litnmore.com/ediscovery/">eDiscovery</a>' +
+          '<a href="https://litnmore.com/ediscovery/">Trial Support Services</a>' +
           '<a href="https://litnmore.com/litigation-stats">Litigation Stats</a>' +
           '<a href="https://litnmore.com/edrm">EDRM</a>' +
         '</div>' +
@@ -49,7 +49,7 @@
           '<div class="site-footer-heading">Contact</div>' +
           '<address>1629 Hendry Street<br>Fort Myers, FL 33901</address>' +
           '<a href="tel:+12393323369">(239) 332-3369</a>' +
-          '<a href="mailto:support@litnmore.com">support@litnmore.com</a>' +
+          '<a href="mailto:msooley@litnmore.com">msooley@litnmore.com</a>' +
         '</div>' +
       '</div>' +
       '<div class="site-footer-bottom">' +
