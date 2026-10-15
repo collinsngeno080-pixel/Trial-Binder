@@ -3,41 +3,42 @@
 // edit the nav links or footer here and every page updates.
 (function () {
   var NAV = [
-    { href: 'index.html', label: 'Home' },
-    { href: 'services.html', label: 'Services' },
-    { href: 'how-it-works.html', label: 'How It Works' },
-    { href: 'about.html', label: 'About' },
-    { href: 'contact.html', label: 'Contact' }
+    { href: '/', page: 'index', label: 'Home' },
+    { href: '/services', page: 'services', label: 'Services' },
+    { href: '/how-it-works', page: 'how-it-works', label: 'How It Works' },
+    { href: '/about', page: 'about', label: 'About' },
+    { href: '/contact', page: 'contact', label: 'Contact' }
   ];
 
-  var current = location.pathname.split('/').pop() || 'index.html';
+  // Works for /about, /about.html and / (home).
+  var current = location.pathname.split('/').pop().replace(/\.html$/, '') || 'index';
 
   var navLinks = NAV.map(function (item) {
-    var active = item.href === current ? ' aria-current="page"' : '';
+    var active = item.page === current ? ' aria-current="page"' : '';
     return '<a href="' + item.href + '"' + active + '>' + item.label + '</a>';
   }).join('');
 
   var header =
     '<header class="site-header">' +
-      '<a class="site-logo" href="index.html" aria-label="Lit &amp; More home">' +
+      '<a class="site-logo" href="/" aria-label="Lit &amp; More home">' +
         '<img src="images/logo-nav.gif" alt="Lit &amp; More" width="400" height="250">' +
       '</a>' +
       '<nav class="site-nav" aria-label="Trial Binder">' + navLinks + '</nav>' +
-      '<a class="site-header-cta" href="contact.html">Send your files</a>' +
+      '<a class="site-header-cta" href="/contact">Send your files</a>' +
     '</header>';
 
   var footer =
     '<footer class="site-footer">' +
       '<div class="site-footer-grid">' +
         '<div class="site-footer-col">' +
-          '<a class="site-footer-brand" href="index.html"><img src="images/logo-footer.png" alt="Lit &amp; More" width="1575" height="696"></a>' +
+          '<a class="site-footer-brand" href="/"><img src="images/logo-footer.png" alt="Lit &amp; More" width="1575" height="696"></a>' +
           '<p>Professional trial binders that keep your case documents organized, accessible and courtroom-ready.</p>' +
         '</div>' +
         '<div class="site-footer-col">' +
           '<div class="site-footer-heading">Trial Binders</div>' +
-          '<a href="services.html">Services</a>' +
-          '<a href="how-it-works.html">How It Works</a>' +
-          '<a href="about.html">About</a>' +
+          '<a href="/services">Services</a>' +
+          '<a href="/how-it-works">How It Works</a>' +
+          '<a href="/about">About</a>' +
         '</div>' +
         '<div class="site-footer-col">' +
           '<div class="site-footer-heading">More from Lit &amp; More</div>' +
@@ -65,4 +66,15 @@
 
   mount('site-header', header);
   mount('site-footer', footer);
+
+  // Clean links (/about) need Netlify. When previewing locally (VS Code Live Server
+  // or opening the file directly), point them back at the .html files instead.
+  var isLocal = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if (isLocal) {
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="/"]'), function (a) {
+      var href = a.getAttribute('href');
+      if (href.indexOf('//') === 0) return;
+      a.setAttribute('href', href === '/' ? 'index.html' : href.slice(1) + '.html');
+    });
+  }
 })();
