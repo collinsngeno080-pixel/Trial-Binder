@@ -28,7 +28,7 @@
         '<img src="' + base + 'images/logo-nav.gif" alt="Lit &amp; More" width="400" height="250">' +
       '</a>' +
       '<nav class="site-nav" id="site-nav" aria-label="Trial Binder">' + navLinks + '</nav>' +
-      '<a class="site-header-cta" href="/contact">Send your files</a>' +
+      '<a class="site-header-cta" href="/contact">Order your binders</a>' +
       '<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>' +
     '</header>';
 

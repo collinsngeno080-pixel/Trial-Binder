@@ -58,7 +58,7 @@
       .then(function (res) {
         if (!res.ok) throw new Error('HubSpot responded ' + res.status);
         form.reset();
-        show('Thank you. We’ve received your request and will reply with a plan and a timeline.', false);
+        show('Thank you. We’ve received your request and will email you a secure link to upload your files.', false);
       })
       .catch(function () {
         show('Sorry, your request didn’t go through. Please call <a href="tel:+12393323369">(239) 332-3369</a> or email <a href="mailto:msooley@litnmore.com">msooley@litnmore.com</a>.', true);
