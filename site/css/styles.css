@@ -12,6 +12,14 @@ a{color:#8B1A1A}a:hover{color:#6E1414}
 .site-nav a[aria-current="page"]{color:#8B1A1A;font-weight:700;border-bottom-color:#8B1A1A}
 .site-header-cta{text-decoration:none;background:#8B1A1A;color:#FFFFFF;font-weight:700;font-size:17px;padding:15px 30px;border-radius:8px}
 .site-header-cta:hover{background:#6E1414;color:#FFFFFF}
+.site-menu-toggle{display:none;width:48px;height:48px;padding:12px;box-sizing:border-box;border:0;border-radius:8px;background:transparent;cursor:pointer;flex-direction:column;justify-content:space-between}
+.site-menu-toggle span{display:block;height:2px;border-radius:2px;background:#1A1A1A;transition:transform .2s,opacity .2s}
+.site-header.is-open .site-menu-toggle span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.site-header.is-open .site-menu-toggle span:nth-child(2){opacity:0}
+.site-header.is-open .site-menu-toggle span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+
+/* Required form fields */
+.req{color:#8B1A1A;margin-left:2px}
 
 /* Footer (rendered by js/layout.js) */
 .site-footer{margin-top:auto;background:#1F1B1A;padding:72px 40px 40px;display:flex;flex-direction:column;gap:48px}
@@ -36,4 +44,16 @@ a{color:#8B1A1A}a:hover{color:#6E1414}
  .page [style*="grid-column: span"]{grid-column:auto!important}
  .page h1{font-size:38px!important}.page h2{font-size:30px!important}
  .page [style*="justify-content: space-between"],.site-footer-bottom{flex-wrap:wrap}
+}
+
+/* Phones and small tablets: logo + menu button, links open in a dropdown */
+@media (max-width: 860px){
+ .page .site-header{flex-wrap:wrap;padding:10px 20px!important;gap:0}
+ .site-logo img{height:56px}
+ .site-menu-toggle{display:flex}
+ .site-nav,.site-header-cta{display:none}
+ .page .site-header.is-open .site-nav{display:flex;order:3;width:100%;flex-direction:column;gap:0!important;padding:6px 0 4px}
+ .site-header.is-open .site-nav a{padding:14px 0;font-size:17px;border-bottom:1px solid #EFE8E1}
+ .site-header.is-open .site-nav a[aria-current="page"]{border-bottom-color:#EFE8E1}
+ .site-header.is-open .site-header-cta{display:block;order:4;width:100%;box-sizing:border-box;text-align:center;margin:12px 0 10px}
 }

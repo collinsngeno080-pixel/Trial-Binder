@@ -10,6 +10,10 @@
     { href: '/contact', page: 'contact', label: 'Contact' }
   ];
 
+  // Folder the site lives in, taken from this script's own address, so images load
+  // from any page address (including the error page on a mistyped link).
+  var base = (document.currentScript && document.currentScript.src || '').replace(/js\/layout\.js.*$/, '');
+
   // Works for /about, /about.html and / (home).
   var current = location.pathname.split('/').pop().replace(/\.html$/, '') || 'index';
 
@@ -21,17 +25,18 @@
   var header =
     '<header class="site-header">' +
       '<a class="site-logo" href="/" aria-label="Lit &amp; More home">' +
-        '<img src="images/logo-nav.gif" alt="Lit &amp; More" width="400" height="250">' +
+        '<img src="' + base + 'images/logo-nav.gif" alt="Lit &amp; More" width="400" height="250">' +
       '</a>' +
-      '<nav class="site-nav" aria-label="Trial Binder">' + navLinks + '</nav>' +
+      '<nav class="site-nav" id="site-nav" aria-label="Trial Binder">' + navLinks + '</nav>' +
       '<a class="site-header-cta" href="/contact">Send your files</a>' +
+      '<button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>' +
     '</header>';
 
   var footer =
     '<footer class="site-footer">' +
       '<div class="site-footer-grid">' +
         '<div class="site-footer-col">' +
-          '<a class="site-footer-brand" href="/"><img src="images/logo-footer.png" alt="Lit &amp; More" width="1575" height="696"></a>' +
+          '<a class="site-footer-brand" href="/"><img src="' + base + 'images/logo-footer.png" alt="Lit &amp; More" width="1575" height="696"></a>' +
           '<p>Professional trial binders that keep your case documents organized, accessible and courtroom-ready.</p>' +
         '</div>' +
         '<div class="site-footer-col">' +
@@ -66,6 +71,17 @@
 
   mount('site-header', header);
   mount('site-footer', footer);
+
+  // Phone menu: the button shows and hides the links.
+  var headerEl = document.querySelector('.site-header');
+  var toggle = document.querySelector('.site-menu-toggle');
+  if (headerEl && toggle) {
+    toggle.addEventListener('click', function () {
+      var open = headerEl.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+  }
 
   // Clean links (/about) need Netlify. When previewing locally (VS Code Live Server
   // or opening the file directly), point them back at the .html files instead.
